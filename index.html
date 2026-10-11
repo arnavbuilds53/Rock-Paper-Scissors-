@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Paper Scissors</title>
+<style>
+body{margin:0;background:#0f0f1a;color:white;font-family:sans-serif;text-align:center;padding-top:50px}
+h1{color:#00ffcc}
+.choices{display:flex;justify-content:center;gap:20px;margin:30px}
+button{font-size:50px;padding:20px 30px;border-radius:15px;border:none;cursor:pointer;background:#1a1a2e;transition:0.2s}
+button:hover{transform:scale(1.1);background:#222244;box-shadow:0 0 15px #00ffcc88}
+#result{font-size:22px;margin-top:20px;min-height:30px}
+.score{margin-top:15px;color:#aaa}
+</style>
+</head>
+<body>
+<h1>✊ Rock Paper Scissors</h1>
+<div class="choices">
+<button onclick="play('rock')">✊</button>
+<button onclick="play('paper')">✋</button>
+<button onclick="play('scissors')">✌️</button>
+</div>
+<div id="result">Chalo khelein!</div>
+<div class="score" id="score">You: 0 | Computer: 0</div>
+
+<script>
+let you=0, comp=0;
+function play(user){
+ const options=['rock','paper','scissors'];
+ const compChoice=options[Math.floor(Math.random()*3)];
+ let res='';
+ if(user===compChoice) res=`Draw! Dono ne ${user} kiya`;
+ else if((user==='rock'&&compChoice==='scissors')||(user==='paper'&&compChoice==='rock')||(user==='scissors'&&compChoice==='paper')){res=`You Win! ${user} beats ${compChoice} 🎉`; you++;}
+ else{res=`You Lose! ${compChoice} beats ${user} 😢`; comp++;}
+ document.getElementById('result').innerText=res;
+ document.getElementById('score').innerText=`You: ${you} | Computer: ${comp}`;
+}
+</script>
+</body>
+                                   </html>
